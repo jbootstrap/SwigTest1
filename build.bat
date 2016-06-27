@@ -7,6 +7,7 @@ rem ant
 SETLOCAL
 
 mkdir src\swigtest1\generated
+del src\swigtest1\generated\*.java
 swig -c++ -java -package swigtest1.generated -outdir src\swigtest1\generated swigdll\swigdll.i
 
 SET VCDIR=C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC

@@ -8,6 +8,7 @@ package swigtest1;
 import java.io.File;
 import java.util.HashSet;
 import java.util.Set;
+import swigtest1.generated.InteVector;
 import swigtest1.generated.SwigClass;
 import swigtest1.generated.swigdll;
 
@@ -33,7 +34,12 @@ public class SwigTest1 {
         System.out.println(x);
         String y = sc.getString();
         System.out.println(y);
-        //swigdll.setString("abc漢字");
+        swigdll.setString("abc漢字");
+        InteVector vec = sc.getIntVector();
+        for(int i=0; i<vec.size(); i++)
+        {
+            System.out.println("get()="+vec.get(i));
+        }
         System.out.println(swigdll.getClassCount());
         sc.delete();
         sc = null;
