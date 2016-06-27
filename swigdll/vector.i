@@ -65,11 +65,19 @@ AUTOBOX(SWIGTYPE, $typemap(jstype,$1_basetype))
 %typemap(jstype) std::vector set "$typemap(autobox,$1_basetype)"
 %typemap(jstype) std::vector &VECTOR_VALUE_IN "$typemap(autobox,$1_basetype)"
 %typemap(javacode) std::vector %{
-  $javaclassname(java.util.Collection<$typemap(autobox,$1_basetype::value_type)> e) {
+  public $javaclassname(java.util.Collection<$typemap(autobox,$1_basetype::value_type)> e) {
     //this.reserve(e.size());
     for($typemap(autobox,$1_basetype::value_type) value: e) {
       //this.push_back(value);
       this.add(value);
     }
+  }
+  public java.util.List<$typemap(autobox,$1_basetype::value_type)> toList() {
+    java.util.List<$typemap(autobox,$1_basetype::value_type)> result = new java.util.ArrayList<>();
+    for(int i=0; i<this.size(); i++)
+    {
+        result.add(this.get(i));
+    }
+    return result;
   }
 %}

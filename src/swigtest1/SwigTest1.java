@@ -7,6 +7,7 @@ package swigtest1;
 
 import java.io.File;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import swigtest1.generated.InteVector;
 import swigtest1.generated.SwigClass;
@@ -40,6 +41,8 @@ public class SwigTest1 {
         {
             System.out.println("get()="+vec.get(i));
         }
+        List<Integer> list = vec.toList();
+        System.out.println(list);
         System.out.println(swigdll.getClassCount());
         sc.delete();
         sc = null;
